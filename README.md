@@ -36,7 +36,7 @@ public User postParamsData(@RequestParam Long id, @RequestParam String name,
 ```java
 //3、post请求file数据
 @PostMapping(value = "/post/file")
-public FileData postFileData(@RequestParam("file") MultipartFile uploadFile, 			    							HttpServletRequest request) {
+public FileData postFileData(@RequestParam("file") MultipartFile uploadFile, HttpServletRequest request) {
     
 }
 ```
@@ -49,7 +49,7 @@ public FileData postFileData(@RequestParam("file") MultipartFile uploadFile, 			
 //4、get请求path数据
 @GetMapping(value = "/get/path/{page}/{size}")
 public Map<String, Object> getPathData(@PathVariable(value = "page") Integer page,
-                                       @PathVariable(value = "size") Integer size, 												HttpServletRequest request) {
+                                       @PathVariable(value = "size") Integer size, HttpServletRequest request) {
     
 }
 ```
@@ -308,7 +308,7 @@ public Map testPostJson() {
     User user = new User(1L, "社会王", "123abc");
     Map<String, String> headParams = new HashMap<>();
     headParams.put("token", "shw-123-jd");
-    return restTemplateUtil.postJson(URL + "/post/json", JSON.toJSONString(user), null, 									headParams);
+    return restTemplateUtil.postJson(URL + "/post/json", JSON.toJSONString(user), null, headParams);
 }
 ```
 
@@ -337,7 +337,7 @@ public Map testPostFile(@RequestParam(value = "file") MultipartFile multipartFil
     try {
         Map<String, String> headParams = new HashMap<>();
         headParams.put("token", "shw-123-jd");
-        return restTemplateUtil.postFile(URL + "/post/file", multipartFile, null, 												headParams);
+        return restTemplateUtil.postFile(URL + "/post/file", multipartFile, null, headParams);
     } catch (IOException e) {
         e.printStackTrace();
         return null;
@@ -370,7 +370,7 @@ public Map testGetParams() {
     inputParams.put("pass", "123abc");
     Map<String, String> headParams = new HashMap<>();
     headParams.put("token", "shw-123-jd");
-    return restTemplateUtil.getParams(URL + "/get/params", inputParams, null, 												headParams);
+    return restTemplateUtil.getParams(URL + "/get/params", inputParams, null, headParams);
 }
 ```
 
